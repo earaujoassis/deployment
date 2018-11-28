@@ -1,0 +1,16 @@
+build/
+dist/
+venv/
+*.egg-info/
+*.egg
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+*~
+.DS_Store
+
+.tox
+.cache
+.pytest_cache
+.coverage
