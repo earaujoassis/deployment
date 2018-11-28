@@ -1,0 +1,6 @@
+{
+  "type": "static",
+  "origin_folder": "${origin_folder}",
+  "destination_folder": "${destination_folder}",
+  "command": "${command}"
+}

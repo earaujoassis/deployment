@@ -1,0 +1,9 @@
+{
+  "type": "containers",
+  "number_of_instances": ${number_of_instances},
+  "exposed_port": ${exposed_port},
+  "baseport": ${baseport},
+  "env": {
+
+  }
+}

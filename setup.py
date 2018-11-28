@@ -12,17 +12,24 @@ setuptools.setup(
     description="Git-based deployment scripts",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/earaujoassis/deplo",
+    url="https://github.com/earaujoassis/deployment",
     packages=setuptools.find_packages(exclude=['contrib', 'docs', 'tests*']),
-    python_requires='>=2.6, <4',
+    install_requires=[
+        'Mako',
+        'argparse',
+    ],
+    python_requires='>=3.0, <4',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    package_data={
+        'deployment': ['templates/*'],
+    },
     entry_points={
         'console_scripts': [
-            'deployment=deployment:main',
+            'ploy=deployment:main',
         ],
     },
     project_urls={
