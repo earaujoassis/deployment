@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from deployment.wizards import init_wizard
+import os
+
+from deployment.wizards import init_wizard, setup_wizard
 from deployment.functions import generate_deployment_descriptor
 
 
@@ -15,7 +17,9 @@ def init():
 
 
 def setup():
-    pass
+    data = setup_wizard()
+    os.system('git remote add deployment {0}'.format(data.pop('upstream')))
+    print("> Alright! The upstream is configured; you may check through `git remote -v`")
 
 
 def push():
