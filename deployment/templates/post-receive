@@ -14,7 +14,7 @@ while read oldrev newrev ref
 do
     if [[ $ref =~ .*/master$ ]];
     then
-        pip install git+ssh://git@github.com/earaujoassis/deployment
+        pip install --user git+ssh://git@github.com/earaujoassis/deployment
         ploy receive $PROJECT $oldrev $newrev
     else
         echo "Ref $ref successfully received. Doing nothing: only the master branch may be deployed on this server."
