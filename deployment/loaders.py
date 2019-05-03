@@ -12,7 +12,6 @@ def load_deployment_file(deployment_options_filepath):
             deployment_options = json.load(deployment_options_file)
         except Exception as e:
             sys.stdout.write('> Problem reading the deployment file; skipping\n')
-            sys.stdout.write('> Revision not deployed\n')
             sys.exit(1)
         project_name = deployment_options.get('project')
         exposed_port = deployment_options.get('exposed_port', 8080)
