@@ -12,7 +12,13 @@ def init():
     print("> All right, let's setup the current project for deployment")
     if not os.path.isdir(os.path.join(os.getcwd(), '.git')):
         print("Hmm... you're not running in a git-project; skipping")
-        sys.exit(1)
+        sys.exit(0)
+
+    default_project_name = os.path.basename(os.getcwd())
+    project_name = input("First, type the name for the project: [default: {0}]".format(default_project_name))
+    project_name = project_name.strip()
+    if project_name.strip() == "":
+        project_name = default_project_name
 
     print("> Select the deployment type:")
     print("[{0}] Using a static generate website;".format(DEPLOYMENT_TYPE_STATIC))
@@ -47,6 +53,7 @@ def init():
         print("> Alright! All details obtained. You may check the `.deployment.json` file")
 
         return {
+            "project_name": project_name,
             "deployment_type": deployment_type,
             "origin_folder": origin_folder,
             "destination_folder": destination_folder,
@@ -78,6 +85,7 @@ def init():
         print("> Alright! If there's any environment variable to plug, you may edit the `.deployment.json` file")
 
         return {
+            "project_name": project_name,
             "deployment_type": deployment_type,
             "number_of_instances": number_of_instances,
             "exposed_port": exposed_port,
@@ -92,6 +100,7 @@ def init():
         print("> Alright! All details obtained. You may check the `.deployment.json` file")
 
         return {
+            "project_name": project_name,
             "deployment_type": deployment_type,
             "composer_path": composer_path,
         }

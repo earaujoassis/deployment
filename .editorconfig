@@ -8,11 +8,11 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{go,py,json}]
+[*.{py}]
 indent_size = 4
 
 [{pre-deploy,deploy,post-deploy}]
 indent_size = 4
 
-[*.{conf,yml}]
+[*.{conf,yml,json}]
 indent_size = 2

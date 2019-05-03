@@ -14,11 +14,8 @@ while read oldrev newrev ref
 do
     if [[ $ref =~ .*/master$ ]];
     then
-        mkdir -p $HOME/.deploys
-        mkdir -p $HOME/.deploys/$PROJECT
-        echo "Revision $newrev received. Deploying master branch to production..."
-        git --work-tree=$HOME/.deploys/$PROJECT --git-dir=$HOME/$PROJECT checkout -f
-        cd $HOME/.deploys/$PROJECT && $HOME/.deploys/executor $oldrev $newrev
+        pip install git+ssh://git@github.com/earaujoassis/deployment
+        ploy receive $PROJECT $oldrev $newrev
     else
         echo "Ref $ref successfully received. Doing nothing: only the master branch may be deployed on this server."
     fi

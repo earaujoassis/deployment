@@ -2,6 +2,8 @@
 
 import os
 import sys
+import subprocess
+import shlex
 
 
 DEPLOYMENT_TYPE_STATIC     = 0
@@ -30,3 +32,25 @@ def print_success(message):
 
 def print_step(message):
     sys.stdout.write(ConsoleColors.BOLD + message + ConsoleColors.END + '\n')
+
+
+def call(c, shell=True):
+    subprocess.call(c, shell=shell)
+
+
+def run(c):
+    return subprocess.run(shlex.split(c), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
+def assert_step(r):
+    if r is not 0:
+        sys.stdout.write('> Something went wrong, aborting...\n')
+        sys.exit(1)
+
+
+def get_deployment_filepath_or_die():
+    deployment_options_filepath = os.path.join(os.getcwd(), '.deployment.json')
+    if not os.path.isfile(deployment_options_filepath):
+        sys.stdout.write('> Missing deployment file; skipping\n')
+        sys.exit(1)
+    return deployment_options_filepath

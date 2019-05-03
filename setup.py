@@ -17,6 +17,7 @@ setuptools.setup(
     install_requires=[
         'Mako',
         'argparse',
+        'giturlparse.py',
     ],
     python_requires='>=3.0, <4',
     classifiers=[

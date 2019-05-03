@@ -12,7 +12,7 @@ def setup():
 
     upstream = ""
     while len(upstream) == 0:
-        upstream = input("Which is the upstream URL: ").strip()
+        upstream = input("Which is the upstream base URL (user@domain, without path): ").strip()
 
     return {
         "upstream": upstream,

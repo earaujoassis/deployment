@@ -1,4 +1,5 @@
 {
+  "project": "${project_name}",
   "type": "compose",
-  "compose_path": "${composer_path}",
+  "compose_path": "${composer_path}"
 }

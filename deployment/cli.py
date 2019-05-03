@@ -28,6 +28,16 @@ setup_command = subparsers.add_parser(
 push_command = subparsers.add_parser(
     'push',
     help='push the current project\'s branch and its commit history to the remote upstream')
+drop_command = subparsers.add_parser(
+    'drop',
+    help='drop a git-ignored file to the remote upstream project folder (ideally config files)')
+drop_command.add_argument('filepath', action='store', help='the path to the file (folder not supported)')
+receive_command = subparsers.add_parser(
+    'receive',
+    help='receive a new revision and deploy it; used in git remote')
+receive_command.add_argument('project', action='store', help='the project name')
+receive_command.add_argument('oldrev', action='store', help='old revision hash')
+receive_command.add_argument('newrev', action='store', help='new revision hash')
 
 
 class DeploymentCLI(object):
@@ -43,13 +53,18 @@ class DeploymentCLI(object):
                 return getattr(module, attrname)
         return None
 
+    def get_task_arguments(self):
+        args = vars(self.namespace)
+        args.pop('parent')
+        return args
+
     def action(self):
-        namespace = self.namespace
         task_function = self.get_module_attribute_safely('parent', tasks)
         if task_function is None:
             utils.print_error('# Command is not implemented yet')
             return
-        return task_function()
+        args = self.get_task_arguments()
+        return task_function(**args)
 
     @staticmethod
     def apply(argv):
