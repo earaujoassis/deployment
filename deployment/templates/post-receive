@@ -17,6 +17,7 @@ do
     if [[ $ref =~ .*/master$ ]];
     then
         pip install --user https://github.com/earaujoassis/deployment/archive/master.zip
+        export PATH=$(python2 -m site --user-base)/bin:$PATH
         ploy receive $PROJECT $oldrev $newrev
     else
         echo "Ref $ref successfully received. Doing nothing: only the master branch may be deployed on this server."
