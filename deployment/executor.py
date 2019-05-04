@@ -16,7 +16,8 @@ def receiver(project, oldrev, newrev, options={}):
 
     for key, value in options["env"].items():
         os.environ[key] = value
-    docker = 'sudo docker'
+    # The user must be a member of the docker group
+    docker = 'docker'
     old_image_label = '{0}-{1}'.format(project, oldrev)
     new_image_label = '{0}-{1}'.format(project, newrev)
     exposed_port = options.get("exposed_port")
