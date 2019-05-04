@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="deployment",
-    version="0.1.0",
+    version="0.1.4",
     license="MIT",
     author="Ewerton Carlos Assis",
     author_email="earaujoassis@gmail.com",

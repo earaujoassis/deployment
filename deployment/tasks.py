@@ -51,7 +51,7 @@ def drop(filepath):
 
 def receive(project, oldrev, newrev):
     sys.stdout.write("Revision {0} received. Deploying master branch to production...\n".format(newrev))
-    call("git --work-tree=$HOME/ploys/{0}.deployment --git-dir=$HOME/ploys/{0}.git checkout -f".format(project))
+    run("git --work-tree=$HOME/ploys/{0}.deployment --git-dir=$HOME/ploys/{0}.git checkout -f".format(project))
     os.chdir("$HOME/ploys/{0}.deployment".format(project))
     deployment_options_filepath = get_deployment_filepath_or_die()
     options = load_deployment_file(deployment_options_filepath)
