@@ -19,7 +19,7 @@ setuptools.setup(
         'argparse',
         'giturlparse.py',
     ],
-    python_requires='>=3.0, <4',
+    python_requires='>=2.7, <4',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
