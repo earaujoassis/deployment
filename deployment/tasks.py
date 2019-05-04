@@ -44,7 +44,7 @@ def push():
 
 def drop(filepath):
     result = run("git config --get remote.deployment.url")
-    upstream = result.stdout.decode("utf-8").strip().replace(".git", ".deployment")
+    upstream = result["stdout"].decode("utf-8").strip().replace(".git", ".deployment")
     fullpath = os.path.join(os.getcwd(), filepath)
     run("scp {0} {1}".format(fullpath, upstream))
 

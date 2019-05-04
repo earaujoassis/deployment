@@ -39,7 +39,10 @@ def call(c, shell=True):
 
 
 def run(c):
-    return subprocess.run(shlex.split(c), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    process = subprocess.Popen(shlex.split(c), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    stdout, stderr = process.communicate()
+    retcode = process.poll()
+    return {"retcode": retcode, "stdout": stdout, "stderr": stderr}
 
 
 def assert_step(r):
