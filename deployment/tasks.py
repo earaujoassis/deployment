@@ -49,10 +49,11 @@ def drop(filepath):
     run("scp {0} {1}".format(fullpath, upstream))
 
 
-def receive(project, oldrev, newrev):
+def receive(project_folder, oldrev, newrev):
+    project_name = project_folder.replace(".git", "")
     sys.stdout.write("Revision {0} received. Deploying master branch to production...\n".format(newrev))
-    run("git --work-tree={1}/ploys/{0}.deployment --git-dir={1}/ploys/{0}.git checkout -f".format(project, home_dir()))
-    os.chdir("{1}/ploys/{0}.deployment".format(project, home_dir()))
+    run("git --work-tree={1}/ploys/{0}.deployment --git-dir={1}/ploys/{0}.git checkout -f".format(project_name, home_dir()))
+    os.chdir("{1}/ploys/{0}.deployment".format(project_name, home_dir()))
     deployment_options_filepath = get_deployment_filepath_or_die()
     options = load_deployment_file(deployment_options_filepath)
-    return receiver(project, oldrev, newrev, options)
+    return receiver(project_name, oldrev, newrev, options)

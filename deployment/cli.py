@@ -35,7 +35,7 @@ drop_command.add_argument('filepath', action='store', help='the path to the file
 receive_command = subparsers.add_parser(
     'receive',
     help='receive a new revision and deploy it; used in git remote')
-receive_command.add_argument('project', action='store', help='the project name')
+receive_command.add_argument('project_folder', action='store', help='the project folder basename (<project>.git)')
 receive_command.add_argument('oldrev', action='store', help='old revision hash')
 receive_command.add_argument('newrev', action='store', help='new revision hash')
 
