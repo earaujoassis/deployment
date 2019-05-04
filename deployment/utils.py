@@ -57,3 +57,7 @@ def get_deployment_filepath_or_die():
         sys.stdout.write('> Missing deployment file; skipping\n')
         sys.exit(1)
     return deployment_options_filepath
+
+
+def home_dir():
+    return os.path.expanduser("~")

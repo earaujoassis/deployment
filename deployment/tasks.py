@@ -9,7 +9,7 @@ from deployment.wizards import init_wizard, setup_wizard
 from deployment.functions import generate_deployment_descriptor
 from deployment.loaders import load_deployment_file
 from deployment.executor import receiver
-from deployment.utils import run, get_deployment_filepath_or_die
+from deployment.utils import run, get_deployment_filepath_or_die, home_dir
 
 
 def init():
@@ -51,8 +51,8 @@ def drop(filepath):
 
 def receive(project, oldrev, newrev):
     sys.stdout.write("Revision {0} received. Deploying master branch to production...\n".format(newrev))
-    run("git --work-tree=$HOME/ploys/{0}.deployment --git-dir=$HOME/ploys/{0}.git checkout -f".format(project))
-    os.chdir("$HOME/ploys/{0}.deployment".format(project))
+    run("git --work-tree={1}/ploys/{0}.deployment --git-dir={1}/ploys/{0}.git checkout -f".format(project, home_dir()))
+    os.chdir("{1}/ploys/{0}.deployment".format(project, home_dir()))
     deployment_options_filepath = get_deployment_filepath_or_die()
     options = load_deployment_file(deployment_options_filepath)
     return receiver(project, oldrev, newrev, options)
