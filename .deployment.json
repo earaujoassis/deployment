@@ -1,4 +1,0 @@
-{
-  "type": "compose",
-  "compose_path": "docker-compose.yml",
-}
