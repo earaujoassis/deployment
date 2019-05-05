@@ -35,7 +35,7 @@ def print_step(message):
 
 
 def call(c, shell=True):
-    subprocess.call(c, shell=shell)
+    return subprocess.call(c, shell=shell)
 
 
 def run(c):
