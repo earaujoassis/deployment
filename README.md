@@ -13,7 +13,7 @@ This is a Python `pip` package, so you're able to `pip install` it in your work 
 it will make available a `ploy` binary, which should be helpful to setup new projects and deploy it.
 
 ```sh
-$ pip install --user https://github.com/earaujoassis/deployment/archive/master.zip
+$ pip install --user https://github.com/earaujoassis/deployment/archive/0.1.7.zip
 ```
 
 Once the package is installed, you may run `ploy init` in order to setup a project. It will check if the project

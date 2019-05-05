@@ -16,7 +16,7 @@ while read oldrev newrev ref
 do
     if [[ $ref =~ .*/master$ ]];
     then
-        pip install --user https://github.com/earaujoassis/deployment/archive/master.zip
+        pip install --user https://github.com/earaujoassis/deployment/archive/0.1.7.zip
         export PATH=$(python2 -m site --user-base)/bin:$PATH
         ploy receive $PROJECT $oldrev $newrev
     else
