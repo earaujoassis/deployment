@@ -25,9 +25,6 @@ init_command.add_argument(
 setup_command = subparsers.add_parser(
     'setup',
     help='create configuration files in the remote upstream and add it to the current project')
-push_command = subparsers.add_parser(
-    'push',
-    help='push the current project\'s branch and its commit history to the remote upstream')
 drop_command = subparsers.add_parser(
     'drop',
     help='drop a git-ignored file to the remote upstream project folder (ideally config files)')

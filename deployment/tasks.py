@@ -38,10 +38,6 @@ def setup():
     print("> Alright! The upstream is configured; you may check through `git remote -v`")
 
 
-def push():
-    run('git push deployment master')
-
-
 def drop(filepath):
     result = run("git config --get remote.deployment.url")
     upstream = result["stdout"].decode("utf-8").strip().replace(".git", ".deployment")

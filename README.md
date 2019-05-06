@@ -20,8 +20,8 @@ Once the package is installed, you may run `ploy init` in order to setup a proje
 has a `.git` setup and create the necessary git-hooks and deployment scripts in the working directory. The
 `ploy setup` will attempt to connect to the remote server and create the necessary information. If something
 is wrong or any necessary information is needed, it will ask for it or raise any error. Once the `init` and
-`setup` steps are successfully completed, you may run `ploy push` in order to deploy the current project to
-the remote upstream (`ploy setup` will have created the necessary upstream for it).
+`setup` steps are successfully completed, you may run `git push deployment master` in order to deploy the current
+project to the remote upstream (`ploy setup` will have created the necessary upstream for it).
 
 If you need any help, please run `ploy --help`.
 
